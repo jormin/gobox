@@ -3,7 +3,7 @@ package id
 import (
 	"fmt"
 
-	"gitlab.wcxst.com/jormin/goid/pkg/id"
+	"github.com/jormin/goid/pkg/id"
 )
 
 var client *id.Client

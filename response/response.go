@@ -5,8 +5,8 @@ import (
 	"net/http"
 
 	"github.com/gin-gonic/gin"
-	"gitlab.wcxst.com/jormin/gobox/errs"
-	"gitlab.wcxst.com/jormin/golog/log"
+	"github.com/jormin/gobox/errs"
+	"github.com/jormin/golog/log"
 )
 
 // HTTP响应

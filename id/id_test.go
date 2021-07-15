@@ -3,7 +3,7 @@ package id
 import (
 	"testing"
 
-	"gitlab.wcxst.com/jormin/golog/log"
+	"github.com/jormin/golog/log"
 )
 
 // 测试生成ID

@@ -9,7 +9,7 @@ import (
 	"time"
 
 	"github.com/shopspring/decimal"
-	"gitlab.wcxst.com/jormin/golog/log"
+	"github.com/jormin/golog/log"
 	"golang.org/x/text/encoding/simplifiedchinese"
 	"golang.org/x/text/transform"
 )
