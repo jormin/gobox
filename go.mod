@@ -8,5 +8,4 @@ require (
 	github.com/go-sql-driver/mysql v1.5.0 // indirect
 	github.com/shopspring/decimal v1.2.0 // indirect
 	golang.org/x/crypto v0.0.0-20190308221718-c2843e01d9a2 // indirect
-//github.com/jormin/goid v0.0.0-20210202060157-8b5ac2490409 // indirect
 )
