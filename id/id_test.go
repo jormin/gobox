@@ -2,23 +2,29 @@ package id
 
 import (
 	"testing"
-
-	"github.com/jormin/golog/log"
 )
 
 // 测试生成ID
 func TestNewID(t *testing.T) {
-	cfg := Config{
-		Host: "111.229.255.133",
-		Port: 31307,
+	tests := []struct {
+		name    string
+		want    int64
+		wantErr bool
+	}{
+		{
+			name:    "normal",
+			wantErr: false,
+		},
 	}
-	err := Init(&cfg)
-	if err != nil {
-		t.Fatalf("init error: %v", err)
+	for _, tt := range tests {
+		t.Run(
+			tt.name, func(t *testing.T) {
+				_, err := NewID()
+				if (err != nil) != tt.wantErr {
+					t.Errorf("NewID() error = %v, wantErr %v", err, tt.wantErr)
+					return
+				}
+			},
+		)
 	}
-	id, err := NewID()
-	if err != nil {
-		t.Errorf("get id error: %v", err)
-	}
-	log.Info("get id success: %d", id)
 }

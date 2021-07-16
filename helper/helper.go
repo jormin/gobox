@@ -5,42 +5,21 @@ import (
 	"io/ioutil"
 	"math/rand"
 	"strconv"
-	"strings"
 	"time"
 
 	"github.com/shopspring/decimal"
-	"github.com/jormin/golog/log"
 	"golang.org/x/text/encoding/simplifiedchinese"
 	"golang.org/x/text/transform"
 )
 
-// 数组中是否存在
-func InArray(need interface{}, arr []interface{}) bool {
-	for _, item := range arr {
-		if need == item {
-			return true
-		}
-	}
-	return false
-}
-
-func StringMultiIndex(need string, arr []string) bool {
-	for _, item := range arr {
-		if strings.Index(need, item) != -1 {
-			return true
-		}
-	}
-	return false
-}
-
 // 生成随机字符串
 func RandomString(l int) string {
 	str := "0123456789abcdefghijklmnopqrstuvwxyz"
-	bytes := []byte(str)
+	b := []byte(str)
 	result := []byte{}
 	r := rand.New(rand.NewSource(time.Now().UnixNano()))
 	for i := 0; i < l; i++ {
-		result = append(result, bytes[r.Intn(len(bytes))])
+		result = append(result, b[r.Intn(len(b))])
 	}
 	return string(result)
 }
@@ -48,7 +27,7 @@ func RandomString(l int) string {
 // 错误终止
 func Must(err error) {
 	if err != nil {
-		log.Fatal("fatal error: %v", err)
+		panic(err)
 	}
 }
 

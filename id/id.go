@@ -1,27 +1,17 @@
 package id
 
 import (
-	"fmt"
+	"strconv"
 
-	"github.com/jormin/goid/pkg/id"
+	"github.com/go-resty/resty/v2"
 )
-
-var client *id.Client
-
-// 配置
-type Config struct {
-	Host string `json:"host"`
-	Port int    `json:"port"`
-}
-
-// 初始化
-func Init(cfg *Config) error {
-	var err error
-	client, err = id.NewClient(fmt.Sprintf("%s:%d", cfg.Host, cfg.Port))
-	return err
-}
 
 // 生成ID
 func NewID() (int64, error) {
-	return client.NewID()
+	c := resty.New()
+	res, err := c.R().Get("http://id.wcxst.com")
+	if err != nil {
+		return 0, err
+	}
+	return strconv.ParseInt(string(res.Body()), 10, 64)
 }

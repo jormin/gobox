@@ -6,7 +6,6 @@ import (
 
 	"github.com/gin-gonic/gin"
 	"github.com/jormin/gobox/errs"
-	"github.com/jormin/golog/log"
 )
 
 // HTTP响应
@@ -50,9 +49,6 @@ func ResError(c *gin.Context, err error, status ...int) {
 	statusCode := http.StatusOK
 	if len(status) > 0 {
 		statusCode = status[0]
-	}
-	if statusCode != http.StatusOK {
-		log.Warn("res error: %s", err.Error())
 	}
 	ResJSON(c, statusCode, response)
 }
