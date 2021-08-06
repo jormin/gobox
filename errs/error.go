@@ -19,7 +19,7 @@ type Error struct {
 // 错误输出
 func (r *Error) Error() string {
 	b, _ := json.Marshal(r)
-	return fmt.Sprintf("s", b)
+	return fmt.Sprintf("%s", b)
 }
 
 // 新建错误
