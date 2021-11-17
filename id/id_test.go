@@ -7,21 +7,18 @@ import (
 // 测试生成ID
 func TestNewID(t *testing.T) {
 	tests := []struct {
-		name    string
-		want    int64
-		wantErr bool
+		name string
+		want int64
 	}{
 		{
-			name:    "normal",
-			wantErr: false,
+			name: "normal",
 		},
 	}
 	for _, tt := range tests {
 		t.Run(
 			tt.name, func(t *testing.T) {
-				_, err := NewID()
-				if (err != nil) != tt.wantErr {
-					t.Errorf("NewID() error = %v, wantErr %v", err, tt.wantErr)
+				if NewID() == "" {
+					t.Error("NewID() error, got empty")
 					return
 				}
 			},
