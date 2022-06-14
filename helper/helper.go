@@ -12,7 +12,7 @@ import (
 	"golang.org/x/text/transform"
 )
 
-// 生成随机字符串
+// RandomString 生成随机字符串
 func RandomString(l int) string {
 	str := "0123456789abcdefghijklmnopqrstuvwxyz"
 	b := []byte(str)
@@ -24,32 +24,32 @@ func RandomString(l int) string {
 	return string(result)
 }
 
-// 错误终止
+// Must 错误终止
 func Must(err error) {
 	if err != nil {
 		panic(err)
 	}
 }
 
-// 解析string为float64
+// ParseStr2Float64 解析string为float64
 func ParseStr2Float64(str string) float64 {
 	f, _ := strconv.ParseFloat(str, 64)
 	return f
 }
 
-// 解析string为int64
+// ParseStr2Int64 解析string为int64
 func ParseStr2Int64(str string) int64 {
 	i, _ := strconv.ParseInt(str, 10, 64)
 	return i
 }
 
-// 解析科学计数法为int64
+// ParseBigDecimal2Int64 解析科学计数法为int64
 func ParseBigDecimal2Int64(str string) int64 {
 	decimalNum, _ := decimal.NewFromString(str)
 	return decimalNum.BigInt().Int64()
 }
 
-// 移除Bom头
+// RemoveBom 移除Bom头
 func RemoveBom(b []byte) []byte {
 	return bytes.TrimPrefix(
 		b,
@@ -61,7 +61,7 @@ func RemoveBom(b []byte) []byte {
 	)
 }
 
-// GBK转Utf8
+// GbkToUtf8 GBK转Utf8
 func GbkToUtf8(s []byte) ([]byte, error) {
 	reader := transform.NewReader(bytes.NewReader(s), simplifiedchinese.GBK.NewDecoder())
 	d, e := ioutil.ReadAll(reader)
@@ -71,7 +71,7 @@ func GbkToUtf8(s []byte) ([]byte, error) {
 	return d, nil
 }
 
-// Utf8转GBK
+// Utf8ToGbk Utf8转GBK
 func Utf8ToGbk(s []byte) ([]byte, error) {
 	reader := transform.NewReader(bytes.NewReader(s), simplifiedchinese.GBK.NewEncoder())
 	d, e := ioutil.ReadAll(reader)

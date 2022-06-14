@@ -16,13 +16,13 @@ type Error struct {
 	Message string `json:"message,omitempty"` // 错误信息
 }
 
-// 错误输出
+// Error 错误输出
 func (r *Error) Error() string {
 	b, _ := json.Marshal(r)
 	return fmt.Sprintf("%s", b)
 }
 
-// 新建错误
+// NewError 新建错误
 func NewError(code int, msg string) *Error {
 	return &Error{
 		Code:    code,
